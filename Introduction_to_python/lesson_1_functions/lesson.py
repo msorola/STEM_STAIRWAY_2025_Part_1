@@ -7,9 +7,6 @@ Learning Objectives:
 • Use type hints and docstrings to create self-documenting code
 • Implement error handling and input validation in functions
 • Understand different return patterns and function composition
-
-Prerequisites: Basic Python syntax, variables, data types, control flow
-Key Concepts: Function definition, parameters, return values, scope, error handling
 """
 
 # === CONCEPT OVERVIEW ===
@@ -19,7 +16,6 @@ Key Concepts: Function definition, parameters, return values, scope, error handl
 # errors gracefully. This lesson focuses on creating functions that are both
 # functional and maintainable.
 
-# === WORKING EXAMPLES ===
 def calculate_area(length: float, width: float) -> float:
     """
     Calculate the area of a rectangle given its length and width.
@@ -78,11 +74,6 @@ def count_words(text: str) -> dict:
         >>> count_words("")
         {}
     """
-    # TODO: Implement word counting
-    # HINT 1: Split the text into words using split()
-    # HINT 2: Use a dictionary to track word frequencies
-    # HINT 3: Consider case sensitivity (convert to lowercase)
-    # CURSOR: Ask me for help with the counting algorithm
     pass
 
 def is_palindrome(text: str) -> bool:
@@ -103,11 +94,6 @@ def is_palindrome(text: str) -> bool:
         >>> is_palindrome("A man a plan a canal Panama")
         True
     """
-    # TODO: Implement palindrome checking
-    # HINT 1: Remove spaces and convert to lowercase
-    # HINT 2: Compare the string with its reverse
-    # HINT 3: Consider what to do with punctuation
-    # CURSOR: Ask me for help with string manipulation
     pass
 
 

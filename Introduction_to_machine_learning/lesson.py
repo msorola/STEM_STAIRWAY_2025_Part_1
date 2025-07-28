@@ -7,8 +7,6 @@ This lesson covers:
 2. Mean Absolute Error (MAE) as a loss function
 3. Gradient descent optimization
 4. Implementation from scratch
-
-Author: AI Workshop for Teachers UTHSCSA 2025
 """
 
 import numpy as np
@@ -29,11 +27,9 @@ def generate_sample_data(n_samples=500):
     """
     # Generate random features
     X = 2 * np.random.rand(n_samples, 1)
-    
     # Generate target values with some noise
     # True relationship: y = 4 + 3*X + noise
     y = 4 + 3 * X + np.random.randn(n_samples, 1)
-    
     return X, y
 
 def visualize_data(X, y, title="Generated Data"):
@@ -66,7 +62,7 @@ def calculate_mae(y_true, y_pred):
     Returns:
     float: Mean Absolute Error
     """
-    return np.mean(np.abs(y_true - y_pred))
+    pass
 
 def predict(X, theta_0, theta_1):
     """
@@ -80,7 +76,7 @@ def predict(X, theta_0, theta_1):
     Returns:
     array: Predicted values
     """
-    return theta_0 + theta_1 * X
+    pass
 
 def compute_gradient_theta_0(y_i, y_hat_i):
     """
@@ -95,10 +91,7 @@ def compute_gradient_theta_0(y_i, y_hat_i):
     Returns:
     float: Gradient for theta_0
     """
-    if y_i - y_hat_i >= 0:
-        return -1
-    else:
-        return 1
+    pass
 
 def compute_gradient_theta_1(y_i, y_hat_i, x_i):
     """
@@ -114,10 +107,7 @@ def compute_gradient_theta_1(y_i, y_hat_i, x_i):
     Returns:
     float: Gradient for theta_1
     """
-    if y_i - y_hat_i >= 0:
-        return -x_i
-    else:
-        return x_i
+    pass
 
 def update_parameters(theta_0, theta_1, alpha, y_i, y_hat_i, x_i):
     """
@@ -136,15 +126,7 @@ def update_parameters(theta_0, theta_1, alpha, y_i, y_hat_i, x_i):
     Returns:
     tuple: (new_theta_0, new_theta_1)
     """
-    # Compute gradients
-    grad_theta_0 = compute_gradient_theta_0(y_i, y_hat_i)
-    grad_theta_1 = compute_gradient_theta_1(y_i, y_hat_i, x_i)
-    
-    # Update parameters
-    new_theta_0 = theta_0 - alpha * grad_theta_0
-    new_theta_1 = theta_1 - alpha * grad_theta_1
-    
-    return new_theta_0, new_theta_1
+    pass
 
 def train_linear_regression_mae(X, y, epochs=100, alpha=0.01, verbose=True):
     """
@@ -160,86 +142,8 @@ def train_linear_regression_mae(X, y, epochs=100, alpha=0.01, verbose=True):
     Returns:
     tuple: (theta_0, theta_1, mae_history)
     """
-    # Initialize parameters
-    theta_0 = 0.0
-    theta_1 = 0.0
-    
-    # Store MAE history for plotting
-    mae_history = []
-    
-    if verbose:
-        print(f"Training for {epochs} epochs with learning rate α = {alpha}")
-        print("-" * 50)
-    
-    for epoch in range(epochs):
-        # Make predictions
-        y_pred = predict(X, theta_0, theta_1)
-        
-        # Calculate MAE
-        mae = calculate_mae(y, y_pred)
-        mae_history.append(mae)
-        
-        # Update parameters using all data points (batch gradient descent)
-        for i in range(len(X)):
-            y_i = y[i][0]  # Extract scalar value
-            y_hat_i = y_pred[i][0]  # Extract scalar value
-            x_i = X[i][0]  # Extract scalar value
-            
-            theta_0, theta_1 = update_parameters(theta_0, theta_1, alpha, y_i, y_hat_i, x_i)
-        
-        # Print progress every 10 epochs
-        if verbose and (epoch + 1) % 10 == 0:
-            print(f"Epoch {epoch + 1:3d}: MAE = {mae:.4f}, θ₀ = {theta_0:.4f}, θ₁ = {theta_1:.4f}")
-    
-    if verbose:
-        print("-" * 50)
-        print(f"Final parameters: θ₀ = {theta_0:.4f}, θ₁ = {theta_1:.4f}")
-        print(f"Final MAE: {mae_history[-1]:.4f}")
-    
-    return theta_0, theta_1, mae_history
+    pass
 
-def plot_training_progress(mae_history):
-    """
-    Plot the training progress (MAE over epochs).
-    
-    Parameters:
-    mae_history (list): List of MAE values for each epoch
-    """
-    plt.figure(figsize=(10, 6))
-    plt.plot(mae_history, color='red', linewidth=2)
-    plt.xlabel('Epoch')
-    plt.ylabel('Mean Absolute Error (MAE)')
-    plt.title('Training Progress: MAE vs Epochs')
-    plt.grid(True, alpha=0.3)
-    plt.show()
-
-def plot_final_model(X, y, theta_0, theta_1):
-    """
-    Plot the final trained model with data points.
-    
-    Parameters:
-    X (array): Feature values
-    y (array): Target values
-    theta_0 (float): Final intercept
-    theta_1 (float): Final slope
-    """
-    # Generate predictions for plotting
-    y_pred = predict(X, theta_0, theta_1)
-    
-    plt.figure(figsize=(10, 6))
-    
-    # Plot data points
-    plt.scatter(X, y, color='blue', alpha=0.6, label='Data points')
-    
-    # Plot regression line
-    plt.plot(X, y_pred, color='red', linewidth=2, label=f'Regression Line: y = {theta_0:.2f} + {theta_1:.2f}x')
-    
-    plt.xlabel('X (Features)')
-    plt.ylabel('y (Target)')
-    plt.title('Linear Regression using Gradient Descent with MAE')
-    plt.legend()
-    plt.grid(True, alpha=0.3)
-    plt.show()
 
 def main():
     """
@@ -248,44 +152,7 @@ def main():
     print("=" * 60)
     print("INTRODUCTION TO MACHINE LEARNING: GRADIENT DESCENT WITH MAE")
     print("=" * 60)
-    
-    # Step 1: Generate sample data
-    print("\n1. Generating sample data...")
-    X, y = generate_sample_data(n_samples=500)
-    print(f"Generated {len(X)} data points")
-    
-    # Step 2: Visualize the data
-    print("\n2. Visualizing the data...")
-    visualize_data(X, y, "Generated Data for Linear Regression")
-    
-    # Step 3: Train the model
-    print("\n3. Training the model using gradient descent with MAE...")
-    theta_0, theta_1, mae_history = train_linear_regression_mae(
-        X, y, epochs=100, alpha=0.01, verbose=True
-    )
-    
-    # Step 4: Plot training progress
-    print("\n4. Plotting training progress...")
-    plot_training_progress(mae_history)
-    
-    # Step 5: Plot final model
-    print("\n5. Plotting final model...")
-    plot_final_model(X, y, theta_0, theta_1)
-    
-    # Step 6: Summary
-    print("\n" + "=" * 60)
-    print("SUMMARY")
-    print("=" * 60)
-    print(f"True relationship: y = 4 + 3*X + noise")
-    print(f"Learned relationship: y = {theta_0:.4f} + {theta_1:.4f}*X")
-    print(f"Final MAE: {mae_history[-1]:.4f}")
-    print(f"Parameter error - θ₀: {abs(4 - theta_0):.4f}, θ₁: {abs(3 - theta_1):.4f}")
-    
-    print("\nKey Concepts Learned:")
-    print("- Linear regression models relationships between variables")
-    print("- MAE measures prediction error using absolute differences")
-    print("- Gradient descent iteratively updates parameters to minimize loss")
-    print("- Learning rate controls the step size in parameter updates")
+
 
 if __name__ == "__main__":
     main() 
