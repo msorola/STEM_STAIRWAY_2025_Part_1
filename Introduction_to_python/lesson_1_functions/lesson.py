@@ -31,7 +31,7 @@ def calculate_area(length: float, width: float) -> float:
         ValueError: If dimensions are negative
         
     Example:
-        >>> calculate_area(5.0, 3.0)
+        calculate_area(5.0, 3.0)
         15.0
     """
     pass
@@ -51,9 +51,9 @@ def find_max_min(numbers: list) -> tuple:
         ValueError: If list is empty
         
     Example:
-        >>> find_max_min([1, 5, 3, 9, 2])
+        find_max_min([1, 5, 3, 9, 2])
         (9, 1)
-        >>> find_max_min([-10, 0, 100])
+        find_max_min([-10, 0, 100])
         (100, -10)
     """
     pass
@@ -69,9 +69,9 @@ def count_words(text: str) -> dict:
         Dictionary with words as keys and counts as values
         
     Example:
-        >>> count_words("hello world hello")
+        count_words("hello world hello")
         {'hello': 2, 'world': 1}
-        >>> count_words("")
+        count_words("")
         {}
     """
     pass
@@ -87,11 +87,11 @@ def is_palindrome(text: str) -> bool:
         True if palindrome, False otherwise
         
     Example:
-        >>> is_palindrome("racecar")
+        is_palindrome("racecar")
         True
-        >>> is_palindrome("hello")
+        is_palindrome("hello")
         False
-        >>> is_palindrome("A man a plan a canal Panama")
+        is_palindrome("A man a plan a canal Panama")
         True
     """
     pass

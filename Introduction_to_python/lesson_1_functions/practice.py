@@ -23,7 +23,7 @@ def get_top_students(grades: dict, passing_score: int) -> list:
         A list of names of students who scored above the threshold
 
     Example:
-        >>> get_top_students({'Alice': 85, 'Bob': 72, 'Charlie': 90}, 80)
+        get_top_students({'Alice': 85, 'Bob': 72, 'Charlie': 90}, 80)
         ['Alice', 'Charlie']
     """
     pass
@@ -43,7 +43,7 @@ def calculate_grade_stats(grades: list) -> dict:
         - passing: Number of passing grades (>= 70)
 
     Example:
-        >>> calculate_grade_stats([85, 92, 78, 65, 88])
+        calculate_grade_stats([85, 92, 78, 65, 88])
         {'average': 81.6, 'highest': 92, 'lowest': 65, 'passing': 4}
     """
     pass
@@ -61,9 +61,9 @@ def format_name(first: str, last: str, middle: str = "") -> str:
         Properly formatted full name
 
     Example:
-        >>> format_name("john", "doe")
+        format_name("john", "doe")
         'John Doe'
-        >>> format_name("mary", "jane", "ann")
+        format_name("mary", "jane", "ann")
         'Mary Ann Jane'
     """
     pass
@@ -81,7 +81,7 @@ def calculate_final_grade(assignments: list, exams: list, weights: tuple = (0.4,
         Weighted final grade rounded to 1 decimal place
 
     Example:
-        >>> calculate_final_grade([85, 90, 88], [78, 85], (0.4, 0.6))
+        calculate_final_grade([85, 90, 88], [78, 85], (0.4, 0.6))
         84.0
     """
     pass
@@ -97,9 +97,9 @@ def get_letter_grade(score: float) -> str:
         Letter grade (A, B, C, D, or F)
 
     Example:
-        >>> get_letter_grade(85)
+        get_letter_grade(85)
         'B'
-        >>> get_letter_grade(92)
+        get_letter_grade(92)
         'A'
     """
     pass
