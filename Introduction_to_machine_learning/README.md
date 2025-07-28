@@ -1,109 +1,94 @@
-# Introduction to Machine Learning: Gradient Descent with MAE
+# Introduction to Machine Learning: Linear Regression Practice
 
-This module introduces fundamental machine learning concepts through hands-on implementation of gradient descent optimization using Mean Absolute Error (MAE) for linear regression.
+This module provides a hands-on introduction to machine learning through implementing linear regression with gradient descent optimization. Students will complete key functions to understand the fundamentals of machine learning algorithms.
 
 ## 📁 File Structure
 
 ```
 Introduction_to_machine_learning/
-├── lesson.py          # Complete lesson with theory and implementation
-└── README.md          # This file
+├── lesson.py      # Core implementation with functions to complete
+└── README.md      # This file
 ```
 
 ## 🎯 Learning Objectives
 
-By the end of this module, you will understand:
+After completing this module, you will be able to:
 
-1. **Linear Regression Fundamentals**
-   - How to model relationships between variables
-   - The concept of parameters (intercept and slope)
-   - Prediction using linear models
+1. **Understand Linear Regression**
+   - Model relationships between variables
+   - Work with parameters (intercept and slope)
+   - Make predictions using linear models
 
-2. **Mean Absolute Error (MAE)**
-   - How to measure prediction accuracy
-   - Why MAE is robust to outliers
-   - Mathematical formulation of MAE
+2. **Implement Core ML Functions**
+   - Calculate Mean Absolute Error (MAE)
+   - Compute gradients for optimization
+   - Update model parameters
+   - Train a complete model
 
-3. **Gradient Descent Optimization**
-   - How to iteratively update parameters
-   - The role of learning rate
-   - Convergence and optimization
+3. **Work with Data**
+   - Generate and visualize sample data
+   - Process data for training
+   - Evaluate model performance
 
-4. **Practical Implementation**
-   - Data generation and visualization
-   - Training algorithms from scratch
-   - Hyperparameter tuning
+## 🔨 Functions to Implement
 
-## 🚀 Getting Started
+In `lesson.py`, you'll need to complete these key functions:
 
-### Prerequisites
+1. `calculate_mae(y_true, y_pred)`
+   - Compute Mean Absolute Error
+   - Formula: `MAE = (1/n) * Σ|y_true - y_pred|`
 
-Install the required packages:
+2. `predict(X, theta_0, theta_1)`
+   - Make predictions using linear model
+   - Formula: `y = theta_0 + theta_1 * X`
 
-```bash
-pip install numpy matplotlib
-```
+3. `compute_gradient_theta_0(y_i, y_hat_i)`
+   - Calculate gradient for intercept
+   - Used in parameter updates
 
-## 📚 Lesson Content
+4. `compute_gradient_theta_1(y_i, y_hat_i, x_i)`
+   - Calculate gradient for slope
+   - Used in parameter updates
 
-### `lesson.py` - Complete Implementation
+5. `update_parameters(theta_0, theta_1, alpha, y_i, y_hat_i, x_i)`
+   - Update model parameters using gradients
+   - Formula: `θ_new = θ_old - α * ∇θ`
 
-The lesson file contains:
+### Running the Code
 
-- **Data Generation**: Synthetic data creation with known relationships
-- **MAE Calculation**: Implementation of Mean Absolute Error
-- **Gradient Computation**: Manual gradient calculation for both parameters
-- **Parameter Updates**: Gradient descent update rules
-- **Training Loop**: Complete training algorithm
-- **Visualization**: Data plots and training progress
-- **Analysis**: Model evaluation and interpretation
+1. Start with `lesson.py`
+   - Implement the required functions
+   - Run to test your implementation
+   - Check the visualizations
 
+2. The code will:
+   - Generate sample data
+   - Train the model using your implementations
+   - Show learning progress
+   - Visualize the final results
 
+## 📊 Expected Results
 
-## 🔬 Key Concepts Explained
+When correctly implemented, you should see:
 
-### Mean Absolute Error (MAE)
+1. Generated data points with noise
+2. Training progress with decreasing MAE
+3. Final regression line fitting the data
+4. Comparison between true and learned parameters
 
-MAE measures the average absolute difference between predictions and true values:
+## 🔍 Implementation Tips
 
-```
-MAE = (1/n) * Σ|y_true - y_pred|
-```
+1. **MAE Calculation**
+   - Remember to take absolute values
+   - Average over all samples
+   - Handle edge cases (empty arrays)
 
-**Advantages:**
-- Robust to outliers
-- Easy to interpret
-- Scale-invariant
+2. **Gradient Computation**
+   - Consider the sign of the error
+   - Include feature values for theta_1
+   - Keep track of dimensions
 
-### Gradient Descent
-
-Gradient descent iteratively updates parameters to minimize the loss function:
-
-```
-θ_new = θ_old - α * ∇θ
-```
-
-Where:
-- `α` is the learning rate
-- `∇θ` is the gradient of the loss with respect to the parameter
-
-### Linear Regression Model
-
-The model predicts using a linear relationship:
-
-```
-y_pred = θ₀ + θ₁ * x
-```
-
-Where:
-- `θ₀` is the intercept (bias)
-- `θ₁` is the slope (weight)
-
-## 📊 Expected Outputs
-
-When you run the lesson, you'll see:
-
-1. **Data Visualization**: Scatter plot of generated data
-2. **Training Progress**: MAE values over epochs
-3. **Final Model**: Regression line fitted to data
-4. **Parameter Comparison**: True vs learned parameters
+3. **Parameter Updates**
+   - Use the learning rate correctly
+   - Update both parameters simultaneously
+   - Maintain numerical stability

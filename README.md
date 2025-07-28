@@ -11,7 +11,6 @@ The primary goal of this module is to **familiarize you with basic programming p
 - Learn object-oriented programming principles
 - Explore machine learning basics through hands-on projects
 - Vibe Code Full Applications
-- 
 ## Part 1 Workshop Structure
 
 This part is organized into two main modules:
@@ -44,7 +43,7 @@ A virtual environment keeps your project dependencies isolated from other Python
 **On macOS/Linux:**
 ```bash
 # Navigate to the workshop directory
-cd AI_Workshop_for_Teachers_UTHSCSA_2025
+cd STEM_STAIRWAY_2025_PART_1
 
 # Create a virtual environment
 python3 -m venv venv
@@ -56,7 +55,7 @@ source venv/bin/activate
 **On Windows:**
 ```bash
 # Navigate to the workshop directory
-cd AI_Workshop_for_Teachers_UTHSCSA_2025
+cd STEM_STAIRWAY_2025_PART_1
 
 # Create a virtual environment
 python -m venv venv
