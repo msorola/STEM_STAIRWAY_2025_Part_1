@@ -11,15 +11,13 @@ The primary goal of this module is to **familiarize you with basic programming p
 - Learn object-oriented programming principles
 - Explore machine learning basics through hands-on projects
 - Vibe Code Full Applications
-## Workshop Structure
+- 
+## Part 1 Workshop Structure
 
-This workshop is organized into two main modules:
+This part is organized into two main modules:
 
 ### 1. Introduction to Python (`Introduction_to_python/`)
 - **Lesson 1**: Functions and Basic Programming Concepts
-- **Lesson 2**: Classes and Object-Oriented Programming
-- **Lesson 3**: Inheritance and Code Reusability
-- **Lesson 4**: OOP Principles and Best Practices
 - **Jupyter Notebook**: DataTypes and Control FLow
 
 ### 2. Introduction to Machine Learning (`Introduction_to_machine_learning/`)
@@ -117,9 +115,7 @@ jupyter notebook jupyter_lesson.ipynb
 Each lesson builds upon the previous one:
 
 - **Lesson 1**: Functions - Learn to write reusable code
-- **Lesson 2**: Classes - Understand object-oriented programming
-- **Lesson 3**: Inheritance - Explore code reusability
-- **Lesson 4**: OOP Principles - Master programming best practices
+- **Jupyter Notebook** - DataTypes and Control FLow
 
 ### 3. Explore Machine Learning
 
