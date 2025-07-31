@@ -49,110 +49,88 @@ def visualize_data(X, y, title="Generated Data"):
     plt.grid(True, alpha=0.3)
     plt.show()
 
-def calculate_mae(y_true, y_pred):
+def compute_gradient_m(y_i, y_hat_i, x_i):
     """
-    Calculate Mean Absolute Error (MAE).
-    
-    MAE = (1/n) * Σ|y_true - y_pred|
-    
-    Parameters:
-    y_true (array): True target values
-    y_pred (array): Predicted target values
-    
-    Returns:
-    float: Mean Absolute Error
-    """
-    pass
+    This computes the gradient of the loss function with respect to m
 
-def predict(X, theta_0, theta_1):
     """
-    Make predictions using linear model: y = theta_0 + theta_1 * X
-    
-    Parameters:
-    X (array): Feature values
-    theta_0 (float): Intercept (bias)
-    theta_1 (float): Slope (weight)
-    
-    Returns:
-    array: Predicted values
-    """
-    pass
+    if y_i - y_hat_i > 0:
+        return -x_i
+    else: return x_i
 
-def compute_gradient_theta_0(y_i, y_hat_i):
+def compute_gradient_b(y_i, y_hat_i):
     """
-    Compute gradient for theta_0 (intercept) using MAE.
-    
-    ∂MAE/∂θ₀ = sign(y_i - y_hat_i)
-    
-    Parameters:
-    y_i (float): True value
-    y_hat_i (float): Predicted value
-    
-    Returns:
-    float: Gradient for theta_0
+    This computes the gradient of the loss function with respect to b
+   
     """
-    pass
+    if y_i - y_hat_i > 0:
+        return -1
+    else: return 1
 
-def compute_gradient_theta_1(y_i, y_hat_i, x_i):
-    """
-    Compute gradient for theta_1 (slope) using MAE.
-    
-    ∂MAE/∂θ₁ = sign(y_i - y_hat_i) * x_i
-    
-    Parameters:
-    y_i (float): True value
-    y_hat_i (float): Predicted value
-    x_i (float): Feature value
-    
-    Returns:
-    float: Gradient for theta_1
-    """
-    pass
+def compute_gradients(X, y, b, m):
+    # get the number of samples we have
+    N = len(y)
 
-def update_parameters(theta_0, theta_1, alpha, y_i, y_hat_i, x_i):
-    """
-    Update parameters using gradient descent.
-    
-    θ_new = θ_old - α * ∇θ
-    
-    Parameters:
-    theta_0 (float): Current intercept
-    theta_1 (float): Current slope
-    alpha (float): Learning rate
-    y_i (float): True value
-    y_hat_i (float): Predicted value
-    x_i (float): Feature value
-    
-    Returns:
-    tuple: (new_theta_0, new_theta_1)
-    """
-    pass
+    # Make a prediction for a linear line
+    y_hat = m * X + b
 
-def train_linear_regression_mae(X, y, epochs=100, alpha=0.01, verbose=True):
-    """
-    Train linear regression model using gradient descent with MAE.
-    
-    Parameters:
-    X (array): Feature values
-    y (array): Target values
-    epochs (int): Number of training iterations
-    alpha (float): Learning rate
-    verbose (bool): Whether to print training progress
-    
-    Returns:
-    tuple: (theta_0, theta_1, mae_history)
-    """
-    pass
+    #Initialize - we need to sum over ALL samples in X, these variables will track the sum
+    gradient_b_sum = 0
+    gradient_m_sum = 0
+
+    # FOR loop to sum the gradient of each sample and add them up
+    for i in range(N):
+        gradient_b_sum += compute_gradient_b(y[i], y_hat[i])
+        gradient_m_sum += compute_gradient_m(y[i], y_hat[i], X[i])
+
+    # Now you can divide by the number of samples N
+    gradient_m = gradient_m_sum / N
+    gradient_b = gradient_b_sum / N
+
+    return gradient_b, gradient_m
+
+def train_model(X, y, alpha, epochs):
+    # Initialize our parameters
+    m = 0
+    b = 0
+
+    # Repeat the learning process
+    for epoch in range(epochs):
+
+        # Step 1: Compute the gradient
+        gradient_b, gradient_m = compute_gradients(X, y, b, m)
+
+        # Use the update equation to update the parameters
+        m = m - alpha * gradient_m
+        b = b - alpha * gradient_b
+
+    return m, b
 
 
-def main():
-    """
-    Main function to demonstrate the complete workflow.
-    """
-    print("=" * 60)
-    print("INTRODUCTION TO MACHINE LEARNING: GRADIENT DESCENT WITH MAE")
-    print("=" * 60)
 
 
 if __name__ == "__main__":
-    main() 
+    pass
+X, y = generate_sample_data()
+visualize_data(X, y)
+
+# Lets make a  generic y=mx + b line
+m = 0
+b = 0
+
+# Let's train the model now to get a better version of m and b
+m_better, b_better = train_model(X, y, alpha=0.01, epochs=500)
+
+# Now let's make a prediction using our model
+y_hat = m * X + b # This is the bad line
+y_hat_better = m_better * X + b_better
+
+# Make a plot
+plt.scatter(X, y, alpha=0.6, color='blue')
+plt.plot(X, y_hat, color='black')
+plt.plot(X, y_hat_better, color='red')
+plt.xlabel('X (Features)')
+plt.ylabel('y (Target)')
+plt.title('Linear Regression')
+plt.legend()
+plt.show()
